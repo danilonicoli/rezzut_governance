@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", sans-serif;
+
+  --color-primary-700: #0a2a43;
+  --color-primary-500: #1d6fb8;
+  --color-primary-300: #8abfe9;
+  --color-bg: #f2f5fb;
+  --color-bg-accent: #eef3fb;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f7f9fd;
+  --color-border: #e2e8f3;
+  --color-text: #0b1220;
+  --color-muted: #5b6b84;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+
+  --shadow-sm: 0 8px 24px rgba(10, 42, 67, 0.12);
+  --shadow-md: 0 18px 40px rgba(10, 42, 67, 0.16);
+  
+  --radius-10: 10px;
+  --radius-14: 14px;
+  --radius-18: 18px;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-sans;
+    background: linear-gradient(135deg, #f2f5fb 0%, #eef3fb 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+
+  /* Portal Mode: Straight corners */
+  .portal-mode * {
+    border-radius: 0 !important;
+  }
+}
+
+@layer components {
+  .ui-button--primary {
+    @apply inline-flex items-center justify-center px-4 py-2 font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed h-10 bg-primary-500 text-white hover:bg-primary-700 rounded-10;
+  }
+  
+  .ui-button--ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed h-10 bg-white border border-border text-text hover:bg-surface-soft rounded-10;
+  }
+  
+  .ui-button--danger {
+    @apply inline-flex items-center justify-center px-4 py-2 font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed h-10 bg-danger text-white hover:opacity-90 rounded-10;
+  }
+
+  .ui-input, .ui-select {
+    @apply w-full px-3 py-2 bg-white border border-border rounded-10 focus:outline-none focus:border-primary-300 transition-colors h-10;
+  }
+
+  .ui-card {
+    @apply bg-surface border border-border shadow-sm rounded-14 p-6;
+  }
+
+  .table-wrapper {
+    @apply overflow-x-auto bg-surface border border-border rounded-14;
+  }
+
+  .ui-table {
+    @apply w-full text-left border-collapse;
+  }
+
+  .ui-table th {
+    @apply px-4 py-3 bg-surface-soft border-b border-border font-display font-semibold text-xs uppercase tracking-wider text-muted;
+  }
+
+  .ui-table td {
+    @apply px-4 py-3 border-b border-border text-sm transition-colors;
+  }
+
+  .ui-table tr:hover td {
+    @apply bg-bg-accent/50;
+  }
+
+  .ui-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+}
